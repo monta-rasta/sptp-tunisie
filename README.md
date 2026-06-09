@@ -14,3 +14,6 @@ npm run dev
 - Modifier le nom, téléphone et lien WhatsApp dans `src/App.jsx`.
 - Remplacer les images dans `src/assets`.
 - Adapter les textes des services, réalisations et avis dans les tableaux de données des composants.
+
+
+simple change
