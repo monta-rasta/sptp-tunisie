@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #171717;
+  background: #fbf4e7;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+::selection {
+  color: #111827;
+  background: #ead8b8;
+}
+
+.section-padding {
+  @apply px-5 py-16 sm:px-6 lg:px-8 lg:py-24;
+}
+
+.container-page {
+  @apply mx-auto w-full max-w-7xl;
+}
+
+.eyebrow {
+  @apply mb-3 inline-flex items-center rounded-full border border-gold/20 bg-white/75 px-4 py-2 text-sm font-semibold text-gold shadow-sm;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full bg-gold px-6 py-3 text-base font-bold text-navy shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-[#d7aa40] focus:outline-none focus:ring-4 focus:ring-gold/30;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-full border border-navy/15 bg-white px-6 py-3 text-base font-bold text-navy shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold focus:outline-none focus:ring-4 focus:ring-gold/20;
+}
+
+.premium-card {
+  @apply rounded-2xl border border-white/80 bg-white/85 shadow-soft backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-glow;
+}
+
+.paint-visual {
+  background:
+    linear-gradient(135deg, rgba(17, 24, 39, 0.72), rgba(17, 24, 39, 0.18)),
+    radial-gradient(circle at 78% 18%, rgba(201, 154, 46, 0.35), transparent 26%),
+    linear-gradient(120deg, #f7f0df 0%, #f9fafb 45%, #d8dee8 100%);
+}
+
+.wall-texture {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(234, 216, 184, 0.45)),
+    repeating-linear-gradient(90deg, rgba(17, 24, 39, 0.03) 0 1px, transparent 1px 22px);
+}
+
+.fade-up {
+  animation: fadeUp 0.75s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
