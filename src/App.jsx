@@ -1,11 +1,24 @@
 import { useMemo, useState } from 'react'
-import heroPainter from './assets/hero-painter.png'
+//import heroPainter from './assets/hero-painter.png'
+// Missing asset placeholders. Add these files to src/assets when ready:
+// hero-wallpaper.jpg, hero-slide-1.jpg, hero-slide-2.jpg, hero-slide-3.jpg, hero-slide-4.jpg, hero-slide-5.jpg
+import heroWallpaper from './assets/hero-painter.png'
+import heroSlide1 from './assets/slide.jpg'
+import heroSlide2 from './assets/slide1.jpg'
+import heroSlide3 from './assets/slide2.jpg'
+// import heroSlide4 from './assets/hero-slide-4.jpg'
+// import heroSlide5 from './assets/hero-slide-5.jpg'
 import teamPreparation from './assets/team-preparation.png'
 import projectSchool from './assets/project-school.png'
 
 const phoneNumber = '+216 00 000 000'
 const whatsappUrl =
   'https://wa.me/21600000000?text=Bonjour%2C%20je%20souhaite%20demander%20un%20devis%20gratuit%20pour%20un%20projet%20de%20peinture.'
+
+const heroWallpaperOpacity = 0.42
+const heroFadeDuration = /*950*/ 550
+const heroPhotoMotionSpeed = /*18*/ 60
+const heroPhotoEntranceDelayMs = /*140*/ 70
 
 const navLinks = [
   ['Accueil', '#accueil'],
@@ -111,7 +124,7 @@ function Header() {
           <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-navy text-gold shadow-soft">
             <Icon name="brush" className="h-5 w-5" />
           </span>
-          <span className="text-lg">Nom du Peintre</span>
+          <span className="text-lg">SPTP Tunisie</span>
         </a>
 
         <div className="hidden items-center gap-7 lg:flex">
@@ -161,6 +174,7 @@ function Header() {
   )
 }
 
+/*
 function Hero() {
   return (
     <section id="accueil" className="relative overflow-hidden bg-cream pt-20">
@@ -205,6 +219,80 @@ function Hero() {
           </div>
           <div className="absolute right-8 top-8 rounded-full bg-gold px-5 py-3 text-sm font-black text-navy shadow-glow">
             Réponse rapide
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+*/
+
+function Hero() {
+  const heroPhotos = [/*heroWallpaper, */heroSlide1, heroSlide2, heroSlide3]
+
+  return (
+    <section
+      id="accueil"
+      className="relative overflow-hidden bg-cream bg-cover bg-center bg-no-repeat pt-20"
+      style={{ backgroundImage: `url(${heroWallpaper})` }}
+    >
+      <div className="absolute inset-0 bg-navy" style={{ opacity: heroWallpaperOpacity }} aria-hidden="true" />
+      
+      <div className="relative container-page grid min-h-[calc(100vh-80px)] gap-10 px-5 py-14 sm:px-6 lg:px-8 lg:py-20"
+        style={{ '--hero-fade-duration': `${heroFadeDuration}ms` }}
+      >
+        <div className="hero-fade z-10">
+          <div className="mx-auto max-w-4xl text-center lg:text-left">
+            <span className="eyebrow">Peintre professionnel | Devis peinture gratuit</span>
+            <h1 className="mt-4 text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Peinture professionnelle pour maisons, écoles et espaces professionnels
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-white/80 sm:text-xl">
+              Un travail propre, soigné et durable pour transformer vos murs avec une finition premium.
+            </p>
+          </div>
+
+          <div className="relative mt-10 lg:max-w-6xl lg:mx-auto">
+            <div className="absolute inset-0 bg-gradient-to-br from-navy/40 via-transparent to-gold/20" aria-hidden="true" />
+            <div className="bleed-mobile">
+              <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/10 shadow-soft backdrop-blur-xl px-4 py-6 sm:px-6">
+              <div
+                className="hero-slider mx-auto flex gap-6"
+                style={{
+                  '--hero-slide-motion': `${heroPhotoMotionSpeed}s`,
+                  animation: `slideLeft ${heroPhotoMotionSpeed}s linear infinite`,
+                  willChange: 'transform',
+                }}
+              >
+                {heroPhotos.concat(heroPhotos).map((photo, index) => {
+                  const displayIndex = index % heroPhotos.length
+                  return (
+                    <div
+                      key={`hero-slide-${index}`}
+                      className="hero-slide min-w-[200px] sm:min-w-[260px] md:min-w-[300px] lg:min-w-[360px] max-w-[420px] overflow-hidden rounded-[1.8rem] bg-slate-900/20 shadow-soft"
+                      style={{ animationDelay: `${displayIndex * heroPhotoEntranceDelayMs}ms` }}
+                    >
+                      <img
+                        src={photo}
+                        alt={`Projet peinture ${displayIndex + 1}`}
+                        className="h-[180px] sm:h-[240px] md:h-[300px] lg:h-[360px] xl:h-[420px] w-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  )
+                })}
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 text-center lg:flex-row lg:justify-start lg:text-left">
+            <a className="btn-primary" href="#contact">
+              Demander un devis gratuit
+            </a>
+            <a className="btn-secondary" href="#realisations">
+              Voir nos réalisations
+            </a>
           </div>
         </div>
       </div>
