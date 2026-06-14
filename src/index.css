@@ -169,3 +169,98 @@ body {
     transform: translateY(0);
   }
 }
+
+.hero-background-slider {
+  width: max-content;
+  height: 100%;
+}
+
+.hero-background-panel {
+  min-width: 100vw;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: heroContentUp var(--hero-content-duration, 0.9s) ease both;
+}
+
+@keyframes heroBackgroundFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideBackground {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes heroContentUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Branding strip: text-based brand references with gentle horizontal slide */
+.brand-strip {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: max-content;
+  animation: brandSlide var(--brand-slide-duration, 22s) linear infinite;
+  will-change: transform;
+}
+
+.brand-item {
+  min-width: 160px;
+}
+
+@keyframes brandSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-strip { animation: none; }
+}
+
+/* Dark background for branding (no stars) */
+.bg-branding-stars {
+  background-color: #071021;
+  background-image: none;
+}
+
+.brand-frame {
+  position: relative;
+  display: inline-block;
+  border-radius: 1.2rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.5), inset 0 1px 0 rgba(255,255,255,0.02);
+  transform: translateZ(0);
+}
+
+.brand-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), transparent 40%);
+  mix-blend-mode: overlay;
+}
+
+/* Slightly reduce brand item size on very small screens */
+@media (max-width: 639px) {
+  .brand-item { min-width: 120px; }
+  .brand-frame { padding-left: 1rem; padding-right: 1rem; }
+  .brand-strip { gap: 1.25rem; }
+}
