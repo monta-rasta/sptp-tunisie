@@ -3,9 +3,9 @@ import { useMemo, useState, useEffect, useRef } from 'react'
 // Missing asset placeholders. Add these files to src/assets when ready:
 // hero-wallpaper.jpg, hero-slide-1.jpg, hero-slide-2.jpg, hero-slide-3.jpg, hero-slide-4.jpg, hero-slide-5.jpg
 import heroWallpaper from './assets/hero-painter.png'
-import heroSlide1 from './assets/slide1.jpg'
-import heroSlide2 from './assets/slide2.jpg'
-import heroSlide3 from './assets/slide3.jpg'
+import heroSlide1 from './assets/slide1.png'
+import heroSlide2 from './assets/slide2.png'
+import heroSlide3 from './assets/slide3.png'
 // import heroSlide4 from './assets/hero-slide-4.jpg'
 // import heroSlide5 from './assets/hero-slide-5.jpg'
 import teamPreparation from './assets/team-preparation.png'
